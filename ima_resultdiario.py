@@ -1,10 +1,8 @@
 #!/home/hvianna/anaconda3/bin/python
 
-
 '''
 BAIXANDO AS INFORMAÇÕS DO IMA-B NO SITE DA ANBIMA
 https://www.anbima.com.br/pt_br/informar/precos-e-indices/precos/precos.htm
-
 '''
 
 import os
@@ -51,10 +49,11 @@ def extract_IMAB():
         r = s.post(url, data=form, headers=headers)
 
         file = f'IMA_{target_day.strftime("%Y%m%d")}.html'
+        sfile = str(file)
         with open(file, 'w') as file:
             file.write(r.text)
 
     s.close()
-    
-    print(f'Arquivo {file} baixado com sucesso.')
-    return file
+
+    print(f'Arquivo {sfile} baixado com sucesso.')
+    return sfile
