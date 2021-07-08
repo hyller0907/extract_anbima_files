@@ -5,8 +5,12 @@ Este repositório tem como objetivo compartilhar scripts em Python que permitem 
 a extração das informações e arquivos diários disponibilizados pela ANBIMA:
 
 https://www.anbima.com.br/pt_br/informar/precos-e-indices/precos/precos.htm
+
+https://www.anbima.com.br/pt_br/informar/ima-resultados-diarios.htm
+
 <pre>
 - Listagem 238
+- IMA-B (Resultados Diários)
 - Taxas de Debêntures
 - Listagem 550
 - Taxas de Títulos Públicos
