@@ -34,6 +34,16 @@ def mov_files(file_name, actual, destination):
 
 if __name__ == "__main__":
 
+    '''
+    extract_IMAB = Arquivo IMA-B
+    extract_TXCRICRA = Arquivo MTM de CRI e CRA
+    Listagem238 = Arquivo com as informações 238
+
+
+
+    '''
+
+
     try:
         today = date.today()
         form_day = today.strftime("%Y%m%d")
@@ -44,7 +54,7 @@ if __name__ == "__main__":
 
         try:
             testing02 = os.path.isfile(file_destination)
-            
+
             if testing02 == False:
                 os.mkdir(file_destination)
 
