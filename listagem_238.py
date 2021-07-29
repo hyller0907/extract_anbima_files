@@ -46,9 +46,6 @@ def Listagem238():
             sfile = str(file)
             with open(file, 'wb') as output:
                 output.write(r)
-                output.close()
 
-    s.close()
-
-    print(f'Arquivo {sfile} baixado com sucesso.')
+        s.close()
     return sfile

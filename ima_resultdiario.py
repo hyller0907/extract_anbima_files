@@ -44,7 +44,6 @@ def extract_IMAB():
         pre_url = 'https://www.anbima.com.br/informacoes/ima/ima-carteira.asp'
         r = s.get(pre_url, headers=headers)
 
-        # Finding the authentication needed to gain access to Pegasus Module
         url = 'https://www.anbima.com.br/informacoes/ima/ima-carteira-down.asp'
         r = s.post(url, data=form, headers=headers)
 
@@ -53,7 +52,5 @@ def extract_IMAB():
         with open(file, 'w') as file:
             file.write(r.text)
 
-    s.close()
-
-    print(f'Arquivo {sfile} baixado com sucesso.')
+        s.close()
     return sfile

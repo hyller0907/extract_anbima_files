@@ -33,6 +33,5 @@ def extract_TXCRICRA():
         sfile = str(my_file)
         arquivo.to_excel(my_file, index=False)
 
-    s.close()
-    print(f'Arquivo {sfile} baixado com sucesso.')
+        s.close()
     return my_file
