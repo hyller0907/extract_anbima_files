@@ -4,6 +4,7 @@ from ima_resultdiario import extract_IMAB
 from taxa_cri_cra import extract_TXCRICRA
 from listagem_238 import Listagem238
 from tx_debentures import extract_TXDEB
+from titulos_pub import extract_TP
 
 import shutil
 import os
@@ -39,8 +40,9 @@ if __name__ == "__main__":
     extract_TXCRICRA = Arquivo MTM de CRI e CRA
     Listagem238      = Arquivo com as informações 238
     extract_TXDEB    = Arquivo Taxa de debentures
+    extract_TP       = Arquivo "ms" de Titulos Publicos
     '''
-    
+
     print(f'#########################################################')
     print(f'################ ARQUIVOS ANBIMA ########################')
     print(f'#########################################################')
@@ -85,4 +87,10 @@ if __name__ == "__main__":
     arquivo_TXDEB = extract_TXDEB()
     arquivo_TXDEB_actual = os.path.join(pwd, arquivo_TXDEB)
     exec_func = mov_files(arquivo_TXDEB, arquivo_TXDEB_actual, file_destination)
+    print(exec_func)
+
+    # Fazendo o Download do arquivo "ms" e salvando na pasta destino
+    arquivo_ms = extract_TP()
+    arquivo_ms_actual = os.path.join(pwd, arquivo_ms)
+    exec_func = mov_files(arquivo_ms, arquivo_ms_actual, file_destination)
     print(exec_func)
