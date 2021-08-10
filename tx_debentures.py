@@ -5,26 +5,12 @@ BAIXANDO AS INFORMAÇÕS "Taxas de Debêntures" DA ANBIMA
 https://www.anbima.com.br/pt_br/informar/taxas-de-debentures.htm
 '''
 
-import os
-import time
-from datetime import date
-
 import requests
 from bs4 import BeautifulSoup
-from pandas.tseries.offsets import BDay
 
-
-def extract_TXDEB():
-    # Changing timezone
-    os.environ['TZ'] = 'America/Sao_Paulo'
-    time.tzset()
-
-    # LOG-IN PARAMs
-    today = date.today()
-    target_day = today - BDay(1)
-
-    data_01 = target_day.strftime("%Y%m%d")
-    data_02 = target_day.strftime("%d/%m/%Y")
+def extract_TXDEB(user_day):
+    data_01 = user_day.strftime("%Y%m%d")
+    data_02 = user_day.strftime("%d/%m/%Y")
     mes = data_02.split('/')[1]
 
     r1 = data_02.split('/')[0]

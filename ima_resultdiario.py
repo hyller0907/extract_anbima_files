@@ -5,23 +5,14 @@ BAIXANDO AS INFORMAÇÕS DO IMA-B NO SITE DA ANBIMA
 https://www.anbima.com.br/pt_br/informar/precos-e-indices/precos/precos.htm
 '''
 
-import os
-import time
-from datetime import date
-
 import requests
-from pandas.tseries.offsets import BDay
 
 
-def extract_IMAB():
-    # Changing timezone
-    os.environ['TZ'] = 'America/Sao_Paulo'
-    time.tzset()
+def extract_IMAB(user_day):
 
-    # LOG-IN PARAMs
-    today = date.today()
-    target_day = today - BDay(1)
-    form_day = target_day.strftime("%d/%m/%Y")
+    form_day = user_day.strftime("%d/%m/%Y")
+    file_day = user_day.strftime("%Y%m%d")
+
 
     with requests.Session() as s:
         s.trust_env = False
@@ -47,7 +38,7 @@ def extract_IMAB():
         url = 'https://www.anbima.com.br/informacoes/ima/ima-carteira-down.asp'
         r = s.post(url, data=form, headers=headers)
 
-        file = f'IMA_{target_day.strftime("%Y%m%d")}.html'
+        file = f'IMA_{file_day}.html'
         sfile = str(file)
         with open(file, 'w') as file:
             file.write(r.text)

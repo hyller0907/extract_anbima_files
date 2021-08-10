@@ -6,20 +6,12 @@ https://www.anbima.com.br/pt_br/informar/precos-e-indices/precos/precos.htm
 """
 
 import io
-import os
-import time
-from datetime import date
-
 import pandas as pd
 import requests
 
-def extract_TXCRICRA():
-    # Changing timezone
-    os.environ['TZ'] = 'America/Sao_Paulo'
-    time.tzset()
+def extract_TXCRICRA(user_day):
 
-    today = date.today()
-    file_name_compl = today.strftime("%Y%m%d")
+    file_name_compl = user_day.strftime("%Y%m%d")
 
     with requests.Session() as s:
         headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0'}
@@ -30,7 +22,6 @@ def extract_TXCRICRA():
         arquivo = pd.read_csv(io.StringIO(r.decode('ISO-8859-1')), sep=";")
 
         my_file = f'ANBIMA_TAXAS_CRI-CRA_{file_name_compl}.xlsx'
-        sfile = str(my_file)
         arquivo.to_excel(my_file, index=False)
 
         s.close()

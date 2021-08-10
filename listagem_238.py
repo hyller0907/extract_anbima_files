@@ -4,24 +4,10 @@
 BAIXANDO AS INFORMAÇÕS DA LISTAGEM 238 NO SITE DA ANBIMA
 https://www.anbima.com.br/pt_br/informar/listagem-238.htm
 '''
-
-import os
-import time
-from datetime import date
-
 import requests
-from pandas.tseries.offsets import BDay
 
-def Listagem238():
-
-    # Changing timezone
-    os.environ['TZ'] = 'America/Sao_Paulo'
-    time.tzset()
-
-    # LOG-IN PARAMs
-    today = date.today()
-    target_day = today - BDay(1)
-    form_day = target_day.strftime("%Y%m%d")
+def Listagem238(user_day):
+    form_day = user_day.strftime("%Y%m%d")
 
     with requests.Session() as s:
         s.trust_env = False
@@ -43,9 +29,8 @@ def Listagem238():
             r = s.get(excel_get, headers = headers).content
 
             file = f'listagem_238_{form_day}.csv'
-            sfile = str(file)
             with open(file, 'wb') as output:
                 output.write(r)
 
         s.close()
-    return sfile
+    return file
