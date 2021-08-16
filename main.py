@@ -45,7 +45,7 @@ if __name__ == "__main__":
     print(f'#########################################################')
 
     try:
-        dwn_day = show_yday('ANBIMA.txt')
+        dwn_day = show_yday('ANBIMA.txt', -1)
         form_day = dwn_day.strftime("%Y%m%d")
         print(f'Data do Download: {form_day}')
 
