@@ -1,10 +1,11 @@
 #!/home/hvianna/anaconda3/bin/python
 
 from yesterday import show_yday
-from ima_resultdiario import extract_IMAB
-from taxa_cri_cra import extract_TXCRICRA
-from listagem_238 import Listagem238
-from tx_debentures import extract_TXDEB
+
+from ima_resultdiario import extract_IMAB #OK
+from taxa_cri_cra import extract_TXCRICRA #OK
+from listagem_238 import Listagem238 #OK
+from tx_debentures import extract_TXDEB #OK
 from titulos_pub import extract_TP
 
 import shutil
